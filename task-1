@@ -1,0 +1,21 @@
+
+
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+
+# Load dataset (replace 'your_dataset.csv' with your actual file)
+data = pd.read_csv('your_dataset.csv')
+
+# Handle missing values (e.g., fill with mean)
+data.fillna(data.mean(), inplace=True)
+
+# Encode categorical features (if any)
+data = pd.get_dummies(data)
+
+# Split into features (X) and target variable (y)
+X = data.drop('target_column', axis=1)
+y = data['target_column']
+
+# Standardize features
+scaler = StandardScaler()
+X = scaler.fit_transform(X)
